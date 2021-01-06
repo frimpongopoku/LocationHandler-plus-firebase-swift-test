@@ -35,25 +35,46 @@ struct LoginPage: View {
 						.cornerRadius(5)
 				}
 				
-				
-				Text("Enter Email").font(.caption).foregroundColor(.secondary)
-				TextField("Email...", text: $viewModel.email)
-					.textFieldStyle(RoundedBorderTextFieldStyle())
-				Text("Enter Password").font(.caption).foregroundColor(.secondary)
-				SecureField("Password...", text: $viewModel.password)
-					.textFieldStyle(RoundedBorderTextFieldStyle())
-				
-				
-				Button(action:{
-					viewModel.authenticate()
-				}){
-					Text("LOGIN")
-						.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-						.frame(maxWidth:.infinity)
-						.padding(15)
-						.background(Color.blue)
-						.foregroundColor(.white)
-						.cornerRadius(6)
+				if(viewModel.regMode){
+					Text("Enter Email").font(.caption).foregroundColor(.secondary)
+					TextField("Email...", text: $viewModel.email)
+						.textFieldStyle(RoundedBorderTextFieldStyle())
+					Text("Enter Password").font(.caption).foregroundColor(.secondary)
+					SecureField("Password...", text: $viewModel.password)
+						.textFieldStyle(RoundedBorderTextFieldStyle())
+					
+					
+					Button(action:{
+						viewModel.registerWithEmailAndPassword()
+					}){
+						Text("REGISTER")
+							.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+							.frame(maxWidth:.infinity)
+							.padding(15)
+							.background(Color.green)
+							.foregroundColor(.white)
+							.cornerRadius(6)
+					}
+				}else{
+					Text("Enter Email").font(.caption).foregroundColor(.secondary)
+					TextField("Email...", text: $viewModel.email)
+						.textFieldStyle(RoundedBorderTextFieldStyle())
+					Text("Enter Password").font(.caption).foregroundColor(.secondary)
+					SecureField("Password...", text: $viewModel.password)
+						.textFieldStyle(RoundedBorderTextFieldStyle())
+					
+					
+					Button(action:{
+						viewModel.authenticate()
+					}){
+						Text("LOGIN")
+							.fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+							.frame(maxWidth:.infinity)
+							.padding(15)
+							.background(Color.blue)
+							.foregroundColor(.white)
+							.cornerRadius(6)
+					}
 				}
 			}.padding()
 			Spacer()
