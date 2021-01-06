@@ -1,14 +1,12 @@
-//
-//  GenerateLocationApp.swift
-//  Shared
-//
-//  Created by frimpongOpokuAgyemang on 05/01/2021.
-//
+
 
 import SwiftUI
-
+import Firebase
 @main
 struct GenerateLocationApp: App {
+	init(){
+		FirebaseApp.configure()
+	}
     var body: some Scene {
         WindowGroup {
             ContentView()
